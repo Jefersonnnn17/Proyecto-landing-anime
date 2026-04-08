@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat:wght@400;700&display=swap');
+
+body {
+    background-color: #000;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.galeria-container { padding: 40px 5%; }
+
+.galeria-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+    border-bottom: 2px solid #96111c;
+    padding-bottom: 20px;
+}
+
+.galeria-header h1 {
+    font-family: 'Bangers';
+    color: white;
+    font-size: 3.5rem;
+    margin: 0;
+}
+
+.galeria-header span { color: #96111c; }
+
+.btn-home {
+    color: white;
+    text-decoration: none;
+    border: 2px solid #96111c;
+    padding: 10px 25px;
+    font-family: 'Bangers';
+    font-size: 1.2rem;
+    transition: 0.3s;
+}
+
+.btn-home:hover {
+    background-color: #96111c;
+}
+
+/* Diseño de Mosaico Pro */
+.masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: 250px; /* Ajustado para que el texto tenga mejor espacio */
+    gap: 15px;
+    grid-auto-flow: dense;
+}
+
+/* --- BLOQUE CORREGIDO PARA EL OVERLAY --- */
+
+.item {
+    position: relative; /* ¡Importante! Actúa como ancla para el texto */
+    border: 3px solid transparent;
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(100%) hue-rotate(-50deg) saturate(300%); /* Filtro Rojo Inicial */
+    transition: 0.5s;
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(150, 17, 28, 0.8); /* Fondo Rojo Akatsuki */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Invisible al inicio */
+    transition: 0.5s ease;
+}
+
+.overlay span {
+    font-family: 'Bangers', cursive;
+    color: white;
+    font-size: 2.2rem;
+    text-transform: uppercase;
+    transform: translateY(30px); /* El texto sube desde abajo */
+    transition: 0.5s ease;
+}
+
+/* --- EFECTOS HOVER --- */
+
+.item:hover { 
+    border-color: #96111c; 
+    box-shadow: 0 0 20px #96111c; 
+}
+
+.item:hover img {
+    filter: sepia(0%) hue-rotate(0deg) saturate(100%); /* Recupera color original */
+    transform: scale(1.1);
+}
+
+.item:hover .overlay {
+    opacity: 1; /* Aparece el fondo rojo */
+}
+
+.item:hover .overlay span {
+    transform: translateY(0); /* El texto llega a su lugar */
+}
+
+/* Clases de Tamaño */
+.vertical { grid-row: span 2; }
+.horizontal { grid-column: span 2; }
+
